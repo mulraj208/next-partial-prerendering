@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { GlobalStyles } from "./styles";
+import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://partialprerendering.com"),

@@ -1,53 +1,31 @@
-import { Product } from '#/types/product';
-import { ProductBestSeller } from '#/components/product-best-seller';
-import { ProductEstimatedArrival } from '#/components/product-estimated-arrival';
-import { ProductLowStockWarning } from '#/components/product-low-stock-warning';
-import { ProductPrice } from '#/components/product-price';
-import { ProductRating } from '#/components/product-rating';
-import { ProductUsedPrice } from '#/components/product-used-price';
-import { dinero, type DineroSnapshot } from 'dinero.js';
 import Image from 'next/image';
 
-export const ProductCard = ({ product }: { product: Product }) => {
-  const price = dinero(product.price as DineroSnapshot<number>);
+export interface PLPProductCard {
+  id: string;
+  thumbnail: string;
+  title: string;
+  description: string;
+  price: number;
+}
+
+export const ProductCard = (product: PLPProductCard) => {
+  if (!product.id) return null;
 
   return (
-    <div className="group block">
-      <div className="space-y-2">
-        <div className="relative aspect-square">
-          {product.isBestSeller ? (
-            <div className="absolute left-2 top-2 z-10 flex">
-              <ProductBestSeller />
-            </div>
-          ) : null}
-          <Image
-            src={`/${product.image}`}
-            fill
-            sizes="(min-width: 1184px) 200px, (min-width: 1024px) 20vw, (min-width: 768px) 25vw, 50vw"
-            className="rounded-xl grayscale group-hover:opacity-80"
-            alt={product.name}
-            placeholder="blur"
-            blurDataURL={product.imageBlur}
-          />
+    <div key={product.id} className='max-w-sm rounded overflow-hidden shadow-lg bg-white'>
+      <img className='w-full h-48 object-cover' src={product.thumbnail}
+           alt='Product Image' />
+
+      <div className='p-4'>
+        <h2 className='text-xl font-bold text-gray-900 line-clamp-2'>{product.title}</h2>
+        <p className='text-gray-600 text-sm mt-2 line-clamp-3'>{product.description}</p>
+        <div className='flex flex-col justify-between items-start gap-4 mt-4'>
+          <span className='text-lg font-semibold text-gray-800'>${product.price}</span>
+          <button
+            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none'>
+            Add to Cart
+          </button>
         </div>
-
-        <div className="truncate text-sm font-medium text-white group-hover:text-vercel-cyan">
-          {product.name}
-        </div>
-
-        {product.rating ? <ProductRating rating={product.rating} /> : null}
-
-        <ProductPrice price={price} discount={product.discount} />
-
-        {product.usedPrice ? (
-          <ProductUsedPrice usedPrice={product.usedPrice} />
-        ) : null}
-
-        <ProductEstimatedArrival leadTime={product.leadTime} />
-
-        {product.stock <= 1 ? (
-          <ProductLowStockWarning stock={product.stock} />
-        ) : null}
       </div>
     </div>
   );
