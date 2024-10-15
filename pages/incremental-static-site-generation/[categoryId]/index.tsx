@@ -2,9 +2,16 @@ import { PLPSidebar } from '#/components/plp-sidebar';
 import { categoryList } from '#/constants';
 import { getProducts } from '#/api/products';
 import { PlpProductCard, PLPProductCard } from '#/components/plp-product-card';
+import { useRouter } from 'next/router';
 import '#/app/styles.css';
 
 export default function ProductList({ products }: { products: Array<PLPProductCard> }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="overflow-y-scroll bg-gray-1100 bg-[url('/grid.svg')] pb-36">
       <div className='space-y-8 lg:space-y-14'>
@@ -35,7 +42,7 @@ export async function getStaticPaths() {
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 // This also gets called at build time
@@ -44,5 +51,10 @@ export async function getStaticProps({ params }: { params: { categoryId: string 
   const products = await getProducts(params.categoryId);
 
   // Pass product data to the page via props
-  return { props: { products } };
+  return {
+    props: {
+      products,
+      revalidate: 60, // This will force the page to revalidate after 60 seconds
+    }
+  };
 }
