@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 import { categoryList } from '#/constants';
 import { NextLogo } from '#/components/next-logo';
-import { PLPProductCard, ProductCard } from '#/components/product-card';
+import { PLPProductCard, PlpProductCards } from '#/components/plp-product-cards';
 
 const sleep = (ms = 2000) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -43,7 +43,7 @@ export default async function ProductList({ params }: { params: { categoryId: st
           <div className='grid grid-cols-3 xl:grid-cols-4 gap-4'>
             {products.map((product: PLPProductCard) => {
               return (
-                <ProductCard key={product.id} {...product} />
+                <PlpProductCards key={product.id} {...product} />
               );
             })}
           </div>
