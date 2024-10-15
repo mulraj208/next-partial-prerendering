@@ -1,6 +1,6 @@
 import { PLPProductCard } from '#/components/plp-product-card';
 
-const sleep = (ms = 2000) => new Promise(resolve => setTimeout(resolve, ms))
+const sleep = (ms = 5000) => new Promise(resolve => setTimeout(resolve, ms))
 
 export const getProducts = async (categoryId: string) => {
   await sleep();
