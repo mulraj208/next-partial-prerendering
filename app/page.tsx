@@ -13,7 +13,6 @@ import { Header } from '#/components/header';
 export default function Page() {
   return (
     <div className='space-y-8 lg:space-y-14'>
-      <h1 className="capitalize py-8">test</h1>
       <Sidebar />
       <div className='lg:pl-72'>
         <div className='mx-auto max-w-4xl space-y-8 px-2 pt-20 lg:px-8 lg:py-8'>

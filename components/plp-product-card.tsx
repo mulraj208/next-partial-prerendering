@@ -8,7 +8,7 @@ export interface PLPProductCard {
   price: number;
 }
 
-export const PlpProductCards = (product: PLPProductCard) => {
+export const PlpProductCard = (product: PLPProductCard) => {
   if (!product.id) return null;
 
   return (
