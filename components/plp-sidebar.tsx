@@ -33,7 +33,7 @@ export const PLPSidebar = () => {
           const isActive = `/category/${category}` === pathname;
 
           return (
-            <li key={category} style={{ textTransform: 'capitalize' }}>
+            <li key={category} className="capitalize text-white">
               <Link className="block lg:my-2" style={isActive ? activeStyles : {}} href={category}>
                 {category}
               </Link>
