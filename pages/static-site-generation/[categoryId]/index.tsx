@@ -2,6 +2,7 @@ import { PLPSidebar } from '#/components/plp-sidebar';
 import { categoryList } from '#/constants';
 import { getProducts } from '#/api/products';
 import { PlpProductCard, PLPProductCard } from '#/components/plp-product-card';
+import { ClientRecommendedProducts } from '#/components/client/client-recommended-products';
 import '#/app/styles.css';
 
 export default function ProductList({ products }: { products: Array<PLPProductCard> }) {
@@ -13,12 +14,14 @@ export default function ProductList({ products }: { products: Array<PLPProductCa
         <div className='lg:pl-72'>
           <div className='mx-auto max-w-8xl space-y-8 px-2 pt-20 lg:px-8 lg:py-8'>
             <div className='grid grid-cols-3 xl:grid-cols-4 gap-4'>
-              {products.map((product: PLPProductCard) => {
+              {products.map((product: PLPProductCard, index) => {
                 return (
-                  <PlpProductCard key={product.id} {...product} />
+                  <PlpProductCard key={product.id} {...product} index={index} />
                 );
               })}
             </div>
+
+            <ClientRecommendedProducts />
           </div>
         </div>
       </div>

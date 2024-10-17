@@ -6,6 +6,7 @@ export interface PLPProductCard {
   title: string;
   description: string;
   price: number;
+  index: number;
 }
 
 export const PlpProductCard = (product: PLPProductCard) => {
@@ -13,7 +14,14 @@ export const PlpProductCard = (product: PLPProductCard) => {
 
   return (
     <div key={product.id} className='max-w-sm rounded overflow-hidden shadow-lg bg-white'>
-      <Image width={300} height={200} className='w-full h-48 object-cover' src={product.thumbnail} alt={product.title} />
+      <Image
+        width={300}
+        height={200}
+        className='w-full h-48 object-cover'
+        src={product.thumbnail}
+        alt={product.title}
+        priority={product.index <= 8}
+      />
 
       <div className='p-4'>
         <h2 className='text-xl font-bold text-gray-900 line-clamp-2'>{product.title}</h2>
