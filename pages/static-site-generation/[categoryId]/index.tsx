@@ -1,4 +1,4 @@
-import { PLPSidebar } from '#/components/plp-sidebar';
+// import { PLPSidebar } from '#/components/plp-sidebar';
 import { categoryList } from '#/constants';
 import { getProducts } from '#/api/products';
 import { PlpProductCard, PLPProductCard } from '#/components/plp-product-card';
@@ -9,7 +9,7 @@ export default function ProductList({ products }: { products: Array<PLPProductCa
   return (
     <div className="overflow-y-scroll bg-gray-1100 bg-[url('/grid.svg')] pb-36">
       <div className='space-y-8 lg:space-y-14'>
-        <PLPSidebar />
+        {/*<PLPSidebar />*/}
 
         <div className='lg:pl-72'>
           <div className='mx-auto max-w-8xl space-y-8 px-2 pt-20 lg:px-8 lg:py-8'>
