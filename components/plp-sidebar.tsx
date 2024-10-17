@@ -30,7 +30,7 @@ export const PLPSidebar = () => {
 
       <ul className='capitalize'>
         {categoryList.map((category) => {
-          const isActive = `/category/${category}` === pathname;
+          const isActive = pathname?.includes(category);
 
           return (
             <li key={category} className="capitalize text-white">
