@@ -10,6 +10,7 @@ export default async function ProductList({ params }: { params: { categoryId: st
       <PLPSidebar />
 
       <div className='lg:pl-72'>
+        <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-white text-center">Streaming SSR</h1>
         <div className='mx-auto max-w-8xl space-y-8 px-2 pt-20 lg:px-8 lg:py-8'>
           <Suspense fallback={<PlpProductCardGridSkeleton />}>
             <PlpProductCardGrid categoryId={params.categoryId} />
