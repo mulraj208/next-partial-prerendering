@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 import { PlpProductCardGrid, PlpProductCardGridSkeleton } from '#/components/plp-product-card-grid';
 import { PLPSidebar } from '#/components/plp-sidebar';
-import { RecommendedProducts, RecommendedProductsSkeleton } from '#/components/recommended-products';
-import { Reviews, ReviewsSkeleton } from '#/components/reviews';
+// import { RecommendedProducts, RecommendedProductsSkeleton } from '#/components/recommended-products';
+// import { Reviews, ReviewsSkeleton } from '#/components/reviews';
 
 export default async function ProductList({ params }: { params: { categoryId: string } }) {
   return (
@@ -16,13 +16,13 @@ export default async function ProductList({ params }: { params: { categoryId: st
             <PlpProductCardGrid categoryId={params.categoryId} />
           </Suspense>
 
-          <Suspense fallback={<RecommendedProductsSkeleton />}>
-            <RecommendedProducts />
-          </Suspense>
+          {/*<Suspense fallback={<RecommendedProductsSkeleton />}>*/}
+          {/*  <RecommendedProducts />*/}
+          {/*</Suspense>*/}
 
-          <Suspense fallback={<ReviewsSkeleton />}>
-            <Reviews />
-          </Suspense>
+          {/*<Suspense fallback={<ReviewsSkeleton />}>*/}
+          {/*  <Reviews />*/}
+          {/*</Suspense>*/}
         </div>
       </div>
     </div>
